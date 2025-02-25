@@ -1,0 +1,25 @@
+[
+    {
+        "id":1,
+        "date":"25.05.2025",
+        "title":"Wie man ein Div in NextJS zentrieren kann",
+        "description":"Alles was du wissen musst, um ein Div zentrieren zu können :-) ",
+        "imgPath":"/example.jpg",
+        "text":"lorem ipsum"
+    },
+    {
+        "id":2,
+        "date":"25.05.2025",
+        "title":"Wie man ein Div in NextJS zentrieren kann",
+        "description":"Alles was du wissen musst, um ein Div zentrieren zu können :-) ",
+        "imgPath":"/example.jpg",
+        "text":"lorem ipsum"
+    },    {
+        "id":3,
+        "date":"25.05.2025",
+        "title":"Wie man ein Div in NextJS zentrieren kann",
+        "description":"Alles was du wissen musst, um ein Div zentrieren zu können :-) ",
+        "imgPath":"/example.jpg",
+        "text":"lorem ipsum"
+    }
+]
