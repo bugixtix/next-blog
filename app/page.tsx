@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <div>
       <Navbar/>
+      <Pseudo className="h-[2rem]"/>
       <Profile/>
-      {/* <Pseudo className="h-[1rem]"/> */}
       <Content/>
       <Footer/>
     </div>

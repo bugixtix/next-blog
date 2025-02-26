@@ -9,7 +9,7 @@ function Profile() {
     const descriptionText = "Dieser Blog bietet praxisnahe Anleitungen, Best Practices und Problemlösungen für Next.js und andere Programmier-Themen. Egal, ob du Anfänger oder erfahrener Entwickler bist – hier gibt es wertvolle Insights für effizientere und modernere Entwicklung."
   return (
     <div className='w-[100%] flex items-center justify-center'>
-        <div className='w-[100%] md:w-[60%] flex flex-col p-4 md:pt-8 gap-1' >
+        <div className='w-[100%] md:w-[60%] flex flex-col p-4 pt-8 md:pt-8 gap-1' >
             <Image className='shadow-lg w-[180px] rounded-md ' alt='Bild' src={pfp}/>
             <p className='text-[25px]/tight tracking-normal font-semibold pt-2'>{mainText}</p>
             <p className='text-[20px]'>{descriptionText}</p>
