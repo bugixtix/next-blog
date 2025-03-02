@@ -1,10 +1,81 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "highlight.js/styles/atom-one-dark.css";
 
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+/* Standard-Styling für Header */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+h2 {
+  font-size: 1.75em;
+  font-weight: bold;
+  margin-top: 0.5rem;
+
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 0.5rem;
+
+}
+
+h4 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 0.5rem;
+
+}
+
+h5 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 0.5rem;
+
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 0.5rem;
+
+}
+
+/* Listen-Styling */
+ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+}
+
+ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+code{
+  padding:0 2px;
+  background-color: aquamarine;
+  margin: 8px 0px;
+}
+iframe{
+  width: 100%;
+  margin: 8px 0;
+}
+a{text-decoration: underline;}
+a:hover{
+  text-decoration: none;
 }
