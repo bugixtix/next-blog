@@ -1,6 +1,10 @@
 // import {use} from 'react'
 import {notFound} from 'next/navigation'
+import Footer from '@/app/components/footer'
 import ARTICLES from '@/public/articles.json'
+import Div_ from '@/app/components/div'
+import Navbar from '@/app/components/navbar'
+import ArticleBox from '@/app/components/articleBox'
 import Image from 'next/image'
 import {promises as fs} from "fs"
 import matter from "gray-matter"
@@ -10,6 +14,9 @@ import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 async function page({params}) {
+  const relatedText = "Was du gerne noch lesen würdest:"
+  const lastTwoArticles = ARTICLES.slice(-2).filter((_, i) => ARTICLES.length - 2 + i !== Number(params.id));
+
   // const {id} = use(params);
   // const [content_, setContent_] = useState({
   //   id:999,
@@ -27,6 +34,7 @@ async function page({params}) {
   console.dir(content ,{depth:null})
   return (
     <div className='w-[100%] flex flex-col items-center'>
+      <Navbar/>
       <div className='w-[100%] lg:w-[60%] 2xl:w-[70%] p-4'>
 
       <div className=' flex flex-col items-center py-4'>
@@ -37,13 +45,21 @@ async function page({params}) {
       <div className='w-[100%] py-1'>
         <Image className='w-[100%]' src={data?.cover} alt='bild' width={800} height={200} />
       </div>
-      <div>
+      <div className='article-page'>
         <Markdown rehypePlugins={[rehypeHighlight, rehypeRaw]} remarkPlugins={[remarkGfm]}>
           {content}
         </Markdown>
       </div>
-
+      <div className="w-[100%] flex flex-col justify-center items-center pt-8">
+        <p className='text-lg font-semibold'>{relatedText}</p>
+        {
+            lastTwoArticles.map((item,index)=>(
+              <Div_ key={index} className={`${index!==ARTICLES.length-1&&'border-b-gray-800 border-b-2'} bg-transparent w-[100%] py-8 px-0 `} children={<ArticleBox content={item}/>}/>
+            ))
+        }
       </div>
+      </div>
+      <Footer/>
     </div>
   )
 }

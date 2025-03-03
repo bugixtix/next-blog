@@ -28,9 +28,9 @@ function ArticleBox({content}) {
 
   return (
     <div>
-        <Link href={`/artikel/${content_.id}`} className='w-[100%] flex flex-col lg:flex-row gap-6 cursor-pointer group transition-all duration-500 ease-linear' onClick={()=>{handleClick(content_.id)}}>
+        <Link href={`/artikel/${content_.id}`} className='w-[100%] flex flex-col lg:flex-row gap-6 cursor-pointer group transition-all duration-500 ease-linear'>
             <div className=' w-[100%] lg:w-[280px]'>
-                <Image width={280} height={0} src={content_.imgPath} alt='bild' className='w-[100%] object-cover rounded-md outline-[calc(280px/2)] outline outline-black/50 outline-offset-[calc(280px/-2)] group-hover:outline-[4px] group-hover:outline-green-800/90 group-hover:outline-offset-[4px] aspect-[1] transition-all ease-linear duration-500 shadow-lg group-hover:shadow-2xl'/>
+                <Image width={200} height={150} src={content_.imgPath} alt='bild' className='w-[100%] object-contain rounded-md outline-[calc(280px/2)] outline outline-black/50 outline-offset-[calc(280px/-2)] group-hover:outline-[4px] group-hover:outline-green-800/90 group-hover:outline-offset-[4px] aspect-[1] transition-all ease-linear duration-500 shadow-lg group-hover:shadow-2xl'/>
             </div>
             <div className='flex flex-col gap-2 w-[100%] lg:w-[50%]'>
                 <p className='text-gray-600 italic text-[14px] font-semibold'>{content_.date}</p>
