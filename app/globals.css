@@ -75,7 +75,7 @@ iframe{
   width: 100%;
   margin: 8px 0;
 }
-a{text-decoration: underline;}
+.article-page a{text-decoration: underline;}
 a:hover{
   text-decoration: none;
 }
