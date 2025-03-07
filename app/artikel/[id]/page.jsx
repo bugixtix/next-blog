@@ -33,9 +33,9 @@ async function page({params}) {
   // console.log(id)
   console.dir(content ,{depth:null})
   return (
-    <div className='w-[100%] flex flex-col items-center'>
+    <div className={`w-[100%] flex flex-col items-center ${darkMode?'dark':'light'}`}>
       <Navbar/>
-      <div className='w-[100%] lg:w-[60%] 2xl:w-[70%] p-4'>
+      <div className='w-[100%] lg:w-[60%] 2xl:w-[70%] p-4 bg-[rgb(var(--background))]'>
 
       <div className=' flex flex-col items-center py-4'>
         <p className='text-gray-500 italic text-sm'>{data?.date}</p>

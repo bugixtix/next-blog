@@ -4,8 +4,7 @@ import React, { useState } from 'react'
 import { IoMoon as Moon } from "react-icons/io5";
 import { IoSunny as Sun } from "react-icons/io5";
 
-function Navbar() {
-  const [darkMode, setDarkMode] = useState(true)
+function Navbar({darkMode,setDarkMode}) {
   const HandleClick = () =>{
     setDarkMode(p=>!p)
   }
