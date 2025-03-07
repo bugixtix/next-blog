@@ -3,10 +3,15 @@
 @tailwind utilities;
 @import "highlight.js/styles/atom-one-dark.css";
 
-
+.light{
+  --background: 255,255,255;
+  --forderground:0,0,0;
+}
+.dark{
+  --background: 0,0,0;
+  --forderground:255,255,255;
+}
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 /* Standard-Styling für Header */
