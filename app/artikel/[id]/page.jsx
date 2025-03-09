@@ -1,4 +1,6 @@
 // import {use} from 'react'
+import {cookies} from 'next/headers'
+import Cookies from 'js-cookie'
 import {notFound} from 'next/navigation'
 import Footer from '@/app/components/footer'
 import ARTICLES from '@/public/articles.json'
@@ -14,44 +16,40 @@ import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 async function page({params}) {
+
+  // 
+  const darkMode = await cookies().get("darkMode")?.value==="true"
+  console.log(darkMode)
+  // 
   const relatedText = "Was du gerne noch lesen würdest:"
   const lastTwoArticles = ARTICLES.slice(-2).filter((_, i) => ARTICLES.length - 2 + i !== Number(params.id));
 
-  // const {id} = use(params);
-  // const [content_, setContent_] = useState({
-  //   id:999,
-  //   date:"01.01.2000",
-  //   title:"loading",
-  //   descriptions:"loading",
-  //   imgPath:"/example.jpg",
-  //   text:"lorem ipsum"
-  // })
   const file  = await fs.readFile(process.cwd() + `/public/articles/${params?.id}.md`, 'utf-8')
   var {data, content} = matter(file)
   // meta = {meta}
   const {id} = await params
   // console.log(id)
-  console.dir(content ,{depth:null})
+  // console.dir(content ,{depth:null})
   return (
-    <div className={`w-[100%] flex flex-col items-center ${darkMode?'dark':'light'}`}>
-      <Navbar/>
-      <div className='w-[100%] lg:w-[60%] 2xl:w-[70%] p-4 bg-[rgb(var(--background))]'>
+    <div className={`w-[100%] flex flex-col items-center ${params.darkMode?'dark':'light'}`}>
+      {/* <Navbar darkMode={darkMode}/> */}
+      <div className='w-[100%] lg:w-[60%] 2xl:w-[70%] p-4'>
 
       <div className=' flex flex-col items-center py-4'>
-        <p className='text-gray-500 italic text-sm'>{data?.date}</p>
-        <p className='font-semibold text-3xl my-4'>{data?.title}</p>
-        <p className='text-lg/snug'>{data?.description}</p>
+        <p className='text-[rgb(var(--background))] italic text-sm'>{data?.date}</p>
+        <p className='text-[rgb(var(--background))] font-semibold text-3xl my-4'>{data?.title}</p>
+        <p className='text-[rgb(var(--background))] text-lg/snug'>{data?.description}</p>
       </div>
       <div className='w-[100%] py-1'>
         <Image className='w-[100%]' src={data?.cover} alt='bild' width={800} height={200} />
       </div>
-      <div className='article-page'>
+      <div className='article-page text-[rgb(var(--background))]'>
         <Markdown rehypePlugins={[rehypeHighlight, rehypeRaw]} remarkPlugins={[remarkGfm]}>
           {content}
         </Markdown>
       </div>
       <div className="w-[100%] flex flex-col justify-center items-center pt-8">
-        <p className='text-lg font-semibold'>{relatedText}</p>
+        <p className='text-[rgb(var(--background))] text-lg font-semibold'>{relatedText}</p>
         {
             lastTwoArticles.map((item,index)=>(
               <Div_ key={index} className={`${index!==ARTICLES.length-1&&'border-b-gray-800 border-b-2'} bg-transparent w-[100%] py-8 px-0 `} children={<ArticleBox content={item}/>}/>

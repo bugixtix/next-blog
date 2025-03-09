@@ -33,9 +33,9 @@ function ArticleBox({content}) {
                 <Image width={200} height={150} src={content_.imgPath} alt='bild' className='w-[100%] object-contain rounded-md outline-[calc(280px/2)] outline outline-black/50 outline-offset-[calc(280px/-2)] group-hover:outline-[4px] group-hover:outline-green-800/90 group-hover:outline-offset-[4px] aspect-[1] transition-all ease-linear duration-500 shadow-lg group-hover:shadow-2xl'/>
             </div>
             <div className='flex flex-col gap-2 w-[100%] lg:w-[50%]'>
-                <p className='text-gray-600 italic text-[14px] font-semibold'>{content_.date}</p>
-                <p className='text-black font-semibold text-lg group-hover:underline'>{content_.title}</p>
-                <p className='text-gray-800'>{content_.description}</p>
+                <p className='text-[rgb(var(--background))] italic text-[14px] font-semibold'>{content_.date}</p>
+                <p className='text-[rgb(var(--background))] font-semibold text-lg group-hover:underline'>{content_.title}</p>
+                <p className='text-[rgb(var(--background))]'>{content_.description}</p>
             </div>
         </Link>
     </div>
