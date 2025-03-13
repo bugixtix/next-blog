@@ -10,13 +10,16 @@ import {parse} from 'cookie'
 import Cookies from 'js-cookie'
 import {GetServerSideProps} from 'next'
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(Cookies.get("darkMode")==="true")
+  const [darkMode, setDarkMode] = useState(true)
+  useEffect(()=>{
+    setDarkMode(Cookies.get("darkMode")==="true")
+  },[])
   useEffect(()=>{
     Cookies.set("darkMode", darkMode.toString(), {expires:365, path:"/"})
   },[darkMode])
 
   return (
-    <div className={`${darkMode?'dark':'light'} bg-[rgb(var(--forderground))]`}>
+    <div className={`${darkMode?'dark':'light'} bg-[rgb(var(--background))]`}>
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} darkModeSwitcher={true} />
       <Pseudo className="h-[2rem]"/>
       <Profile/>
