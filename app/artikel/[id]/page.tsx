@@ -1,4 +1,6 @@
 // import {use} from 'react'
+import { Metadata } from "next";
+
 import {cookies} from 'next/headers'
 import Cookies from 'js-cookie'
 import {notFound} from 'next/navigation'
@@ -15,6 +17,16 @@ import Markdown from "react-markdown"
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+
+export async function generateMetadata({ params }){
+  console.log(params.id)
+  
+  const article = ARTICLES.find((a) => Number(a.id)===Number(params.id));
+  return {
+    title: `${article?.title} | Haj-Ahmad Blog`,
+    description: article?.description,
+  };
+}
 async function page({params}) {
 
   // 
@@ -52,7 +64,7 @@ async function page({params}) {
         <p className='text-[rgb(var(--forderground))] text-lg font-semibold'>{relatedText}</p>
         {
             lastTwoArticles.map((item,index)=>(
-              <Div_ key={index} className={`${index!==ARTICLES.length-1&&'border-b-gray-800 border-b-2'} bg-transparent w-[100%] py-8 px-0 `} children={<ArticleBox content={item}/>}/>
+              <Div_ key={index} className={`${index!==lastTwoArticles.length-1&&'border-b-gray-800 border-b-2'} bg-transparent w-[100%] py-8 px-0 `} children={<ArticleBox content={item}/>}/>
             ))
         }
       </div>
