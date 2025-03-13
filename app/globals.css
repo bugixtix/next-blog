@@ -3,6 +3,18 @@
 @tailwind utilities;
 @import "highlight.js/styles/atom-one-dark.css";
 
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Thin.ttf);font-weight: 100;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-ExtraLight.ttf);font-weight: 200;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Light.ttf);font-weight: 300;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Regular.ttf);font-weight: 400;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Medium.ttf);font-weight: 500;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-SemiBold.ttf);font-weight: 600;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Bold.ttf);font-weight: 700;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-ExtraBold.ttf);font-weight: 800;}
+@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Black.ttf);font-weight: 900;}
+
+
+
 .light{
   --background: 255,255,255;
   --forderground:0,0,0;
@@ -12,7 +24,7 @@
   --background: 0,0,0;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: RaleWay, Helvetica, sans-serif;
 }
 /* Standard-Styling für Header */
 h1 {
@@ -73,7 +85,7 @@ li {
 
 code{
   padding:0 2px;
-  background-color: aquamarine;
+  background-color: gray;
   margin: 8px 0px;
 }
 iframe{
