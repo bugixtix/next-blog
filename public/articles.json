@@ -1,22 +1,22 @@
 [
     {
         "id":0,
-        "date":"25.05.2025",
+        "date":"25.02.2025",
         "title":"Soll ich mit Next.js anfangen?",
         "description":"Ich habe Freizeit um etwas neues zu lernen, Next.js klingt ziemlich Cool",
         "imgPath":"/images/nextjs.png"
     },
     {
         "id":1,
-        "date":"25.05.2025",
-        "title":"Wie man ein Div in NextJS zentrieren kann",
-        "description":"Alles was du wissen musst, um ein Div zentrieren zu können :-) ",
-        "imgPath":"/example.jpg"
+        "date":"14.03.2025",
+        "title":"Warum Next.js?",
+        "description":"Die Vorteile von Next.js auf einen kurzen Blick",
+        "imgPath":"/images/nextjs.webp"
     },    {
         "id":2,
-        "date":"25.05.2025",
-        "title":"Wie man ein Div in NextJS zentrieren kann",
-        "description":"Alles was du wissen musst, um ein Div zentrieren zu können :-) ",
-        "imgPath":"/example.jpg"
+        "date":"14.03.2025",
+        "title":"Next.js Routing leicht gemacht!",
+        "description":"Wie funktionieren Seiten, dynamische Routen und API-Routen?",
+        "imgPath":"/images/nextjs-app-router.png"
     }
 ]
