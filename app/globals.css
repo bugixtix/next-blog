@@ -3,66 +3,72 @@
 @tailwind utilities;
 @import "highlight.js/styles/atom-one-dark.css";
 
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Thin.ttf);font-weight: 100;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-ExtraLight.ttf);font-weight: 200;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Light.ttf);font-weight: 300;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Regular.ttf);font-weight: 400;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Medium.ttf);font-weight: 500;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-SemiBold.ttf);font-weight: 600;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Bold.ttf);font-weight: 700;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-ExtraBold.ttf);font-weight: 800;}
-@font-face {font-family: RaleWay;src: url(/public/font_raleway/Raleway-Black.ttf);font-weight: 900;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-Thin.ttf);font-weight: 100;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-ExtraLight.ttf);font-weight: 200;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-Light.ttf);font-weight: 300;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-Regular.ttf);font-weight: 400;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-Medium.ttf);font-weight: 500;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-SemiBold.ttf);font-weight: 600;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-Bold.ttf);font-weight: 700;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-ExtraBold.ttf);font-weight: 800;}
+@font-face {font-family: RaleWay;src: url(/font_raleway/Raleway-Black.ttf);font-weight: 900;}
 
 
 
 .light{
-  --background: 255,255,255;
   --forderground:0,0,0;
+  --background: 255,255,255;
+  --profile-title:159, 7, 18;
+  --footer:22, 36, 86;
+  --gray:150,150,160;
 }
 .dark{
   --forderground:255,255,255;
   --background: 0,0,0;
+  --profile-title:251, 44, 54;
+  --footer:255,255,255;
+  --gray:200,200,200;
 }
 body {
   font-family: RaleWay, Helvetica, sans-serif;
 }
 /* Standard-Styling für Header */
 h1 {
-  font-size: 2em;
+  font-size: 2.1em;
   font-weight: bold;
   margin-top: 0.5rem;
 }
 
 h2 {
-  font-size: 1.75em;
+  font-size: 1.85em;
   font-weight: bold;
   margin-top: 0.5rem;
 
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-weight: bold;
   margin-top: 0.5rem;
 
 }
 
 h4 {
-  font-size: 1.25em;
+  font-size: 1.35em;
   font-weight: bold;
   margin-top: 0.5rem;
 
 }
 
 h5 {
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-weight: bold;
   margin-top: 0.5rem;
 
 }
 
 h6 {
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
   margin-top: 0.5rem;
 
@@ -85,9 +91,9 @@ li {
 
 code{
   padding:0 2px;
-  background-color: gray;
   margin: 8px 0px;
 }
+
 iframe{
   width: 100%;
   margin: 8px 0;
@@ -95,4 +101,8 @@ iframe{
 .article-page a{text-decoration: underline;}
 a:hover{
   text-decoration: none;
+}
+.markdown p, .markdown ul li, .markdown ol li, .markdown a {
+  font-size: 24px;
+  font-weight: 500;
 }
