@@ -16,16 +16,16 @@ function Navbar({theme = false,setTheme=()=>{}, themeSwitcher=false}) {
   }
 
   const ITEMS = [
-    {
-      id:0,
-      text:"Startseite",
-      href:"/",
-      className:"text-lg font-semibold tracking-wide p-1 hover:text-green-500 text-[rgb(var(--forderground))] transition-all ease-linear duration-300"
-    },
+    // {
+    //   id:0,
+    //   text:"Startseite",
+    //   href:"/",
+    //   className:"text-lg font-semibold tracking-wide p-1 hover:text-green-500 text-[rgb(var(--forderground))] transition-all ease-linear duration-300"
+    // },
     {
       id:1,
       text:"Artikel",
-      href:"/artikel",
+      href:"/",
       className:"text-lg font-semibold tracking-wide p-1 hover:text-purple-500 text-[rgb(var(--forderground))] transition-all ease-linear duration-300"
     },
     {
@@ -36,18 +36,18 @@ function Navbar({theme = false,setTheme=()=>{}, themeSwitcher=false}) {
     },
     {
       id:3,
-      text:"Kontaktiere Mich",
-      href:"/",
+      text:"Kontakt",
+      href:"/kontakt",
       className:"text-lg font-semibold tracking-wide p-1 hover:text-slate-500 text-[rgb(var(--forderground))] transition-all ease-linear duration-300",
     }
   ]
   return (
     <div className='w-[100%] flex items-center justify-center relative'>
-        <div className='w-[100%] flex flex-wrap items-center justify-center gap-2 sm:gap-8 py-8'>
+        <div className='w-[100%] flex flex-wrap items-center justify-center gap-2 sm:gap-8 py-12'>
         {
           ITEMS.map((i,index)=>(<a key={index} href={i.href} className={i.className}>{i.text}</a>))
         }
-            {themeSwitcher && <button className='flex flex-wrap justify-center items-center group  transition-all ease-linear duration-300' onClick={()=>{HandleClick()}}>{ theme==="dark"?<Sun className='text-2xl group-hover:text-yellow-400 text-[rgb(var(--forderground))] transition-all duration-300 ease-linear'/>:<Moon className='text-2xl text-[rgb(var(--forderground))] group-hover:text-blue-400 transition-all duration-300 ease-linear'/>}</button>}
+            {<button disabled={!themeSwitcher} className='flex flex-wrap justify-center items-center group  transition-all ease-linear duration-300' onClick={()=>{HandleClick()}}>{ theme==="dark"?<Sun className={`${!themeSwitcher && 'opacity-0'} text-2xl group-hover:text-yellow-400 text-[rgb(var(--forderground))] transition-all duration-300 ease-linear`}/>:<Moon className={`${!themeSwitcher && 'opacity-0'} text-2xl text-[rgb(var(--forderground))] group-hover:text-blue-400 transition-all duration-300 ease-linear`}/>}</button>}
         </div>
     </div>
   )
