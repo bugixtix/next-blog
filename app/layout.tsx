@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Haj-Ahmad Blog",
+  title: "Haj-Ahmad Housam",
   description: "Hilfreiche Tipps und Tricks rund um Next.js",
 };
 
