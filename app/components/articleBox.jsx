@@ -12,7 +12,7 @@ function ArticleBox({content}) {
   const [content_, setContent_] = useState({
     title:"loading",
     description:"loading",
-    imgPath:"/loading",
+    imgPath:"/images/nextjs.webp",
     id:999,
     text:"",
     date:"01.01.2000"
@@ -28,14 +28,14 @@ function ArticleBox({content}) {
 
   return (
     <div>
-        <Link href={`/artikel/${content_.id}`} className='w-[100%] flex flex-col lg:flex-row gap-6 cursor-pointer group transition-all duration-500 ease-linear'>
-            <div className=' w-[100%] lg:w-[280px]'>
-                <Image width={200} height={150} src={content_.imgPath} alt='bild' className='w-[100%] object-contain rounded-md outline-[calc(280px/2)] outline outline-black/50 outline-offset-[calc(280px/-2)] group-hover:outline-[4px] group-hover:outline-green-800/90 group-hover:outline-offset-[4px] aspect-[1] transition-all ease-linear duration-500 shadow-lg group-hover:shadow-2xl'/>
+        <Link href={`/artikel/${content_.id}`} className='w-[100%] flex flex-col items-start md:flex-row gap-6 cursor-pointer group transition-all duration-500 ease-linear md:pl-8'>
+            <div className=' w-[100%] h-auto md:h-[330px] md:w-[330px]'>
+                <Image width={250} height={150} src={content_.imgPath} alt='bild' className='w-[100%] h-[100%] object-contain bg-gray-300' priority/>
             </div>
-            <div className='flex flex-col gap-2 w-[100%] lg:w-[50%]'>
-                <p className='text-[rgb(var(--forderground))] italic text-[14px] font-semibold'>{content_.date}</p>
-                <p className='text-[rgb(var(--forderground))] font-semibold text-lg group-hover:underline'>{content_.title}</p>
-                <p className='text-[rgb(var(--forderground))]'>{content_.description}</p>
+            <div className='flex flex-col gap-2 w-[100%]  flex-1'>
+                <p className='text-[rgb(var(--forderground))] font-semibold text-2xl sm:text-3xl/snug tracking-tight'>{content_.title}</p>
+                <p className='text-[rgb(var(--forderground))] italic text-lg font-light'>{content_.date}</p>
+                <p className='text-[rgb(var(--forderground))] text-lg/tight sm:text-[28px]/snug  md:pr-8'>{content_.description}</p>
             </div>
         </Link>
     </div>
