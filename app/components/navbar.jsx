@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { IoMoon as Moon } from "react-icons/io5";
 import { IoSunny as Sun } from "react-icons/io5";
 
-function Navbar({theme = false,setTheme=()=>{}, themeSwitcher=false}) {
+function Navbar({theme = "light",setTheme=()=>{}, themeSwitcher=false}) {
   useEffect(()=>{
   },[])
   const HandleClick = () =>{
@@ -16,12 +16,6 @@ function Navbar({theme = false,setTheme=()=>{}, themeSwitcher=false}) {
   }
 
   const ITEMS = [
-    // {
-    //   id:0,
-    //   text:"Startseite",
-    //   href:"/",
-    //   className:"text-lg font-semibold tracking-wide p-1 hover:text-green-500 text-[rgb(var(--forderground))] transition-all ease-linear duration-300"
-    // },
     {
       id:1,
       text:"Artikel",
@@ -47,7 +41,7 @@ function Navbar({theme = false,setTheme=()=>{}, themeSwitcher=false}) {
         {
           ITEMS.map((i,index)=>(<a key={index} href={i.href} className={i.className}>{i.text}</a>))
         }
-            {<button disabled={!themeSwitcher} className='flex flex-wrap justify-center items-center group  transition-all ease-linear duration-300' onClick={()=>{HandleClick()}}>{ theme==="dark"?<Sun className={`${!themeSwitcher && 'opacity-0'} text-2xl group-hover:text-yellow-400 text-[rgb(var(--forderground))] transition-all duration-300 ease-linear`}/>:<Moon className={`${!themeSwitcher && 'opacity-0'} text-2xl text-[rgb(var(--forderground))] group-hover:text-blue-400 transition-all duration-300 ease-linear`}/>}</button>}
+            {<button className='flex flex-wrap justify-center items-center group  transition-all ease-linear duration-300' onClick={()=>{HandleClick()}}>{ theme==="dark"?<Sun className={`text-2xl group-hover:text-yellow-400 text-[rgb(var(--forderground))] transition-all duration-300 ease-linear`}/>:<Moon className={`text-2xl text-[rgb(var(--forderground))] group-hover:text-blue-400 transition-all duration-300 ease-linear`}/>}</button>}
         </div>
     </div>
   )

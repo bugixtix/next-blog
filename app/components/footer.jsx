@@ -8,9 +8,8 @@ function Footer() {
     const year_ = date.getFullYear()
   return (
     <div className='w-[100%] flex items-center justify-center'>
-        <div className='w-[100%] flex items-center justify-center gap-4 py-8'>
+        <div className='w-[100%] flex items-center justify-center gap-4 pt-8 pb-16'>
             <a className='text-sm hover:underline cursor-pointer flex flex-wrap gap-1 items-center text-[rgb(var(--footer))]' href="https://www.github.com/bugixtix" target="_blank" rel='noopener noreferrer' >{year_ + text}<span><Cat/></span></a>
-            
         </div>
     </div>
   )
