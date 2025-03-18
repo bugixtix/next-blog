@@ -14,7 +14,7 @@ function Profile({darkMode=false}) {
             <p className={`text-2xl/normal tracking-normal sm:text-3xl text-center font-bold pt-2 text-[rgb(var(--profile-title))]`}>{mainText}</p>
             <p className={`text-lg/normal tracking-wide sm:text-2xl text-center italic font-semibold text-[rgb(var(--forderground))]`}>{descriptionText}</p>
         </div>
-        <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--gray))] rounded-2xl my-16"></div>
+        <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--line))] rounded-2xl my-16"></div>
     </div>
   )
 }

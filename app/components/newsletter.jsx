@@ -17,7 +17,7 @@ function Newsletter() {
   }
   return (
     <div className='flex flex-col items-center w-[100%] p-4 pb-12 text-[rgb(var(--forderground))]'>
-      <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--gray))] rounded-2xl my-16"></div>
+      <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--line))] rounded-2xl my-16"></div>
       <div className='flex flex-col items-center sm:w-[50%]'>
 
       <div className='flex flex-col items-center py-2 '>
