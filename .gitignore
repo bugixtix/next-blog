@@ -40,3 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 public/serviceAccountKey.json
+app/api/backend/serviceAccountKey.json
