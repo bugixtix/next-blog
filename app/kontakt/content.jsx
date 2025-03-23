@@ -6,10 +6,37 @@ import Profile from '@/app/components/profile.jsx'
 import Newsletter from '@/app/components/newsletter.jsx'
 import Footer from '@/app/components/footer'
 import { LiaLongArrowAltRightSolid as Arrow} from "react-icons/lia";
+import { TfiControlShuffle } from 'react-icons/tfi'
 
 export function ContactForm({}){
-    const DoSubmit = () =>{
-        console.log('submitted!')
+    const [formData, setFormData] = useState({name:"", message:"",email:""})
+    const [btnTxt, setBtnTxt] = useState('Nachricht Senden')
+    const DoChangeName = (e) =>{setFormData((p)=>({...p, name:e.target.value}))}
+    const DoChangeMessage = (e) =>{setFormData((p)=>({...p, message:e.target.value}))}
+    const DoChangeEmail = (e) =>{setFormData((p)=>({...p, email:e.target.value}))}
+    const DoSubmit = (e) =>{
+        e.preventDefault()
+        // setBtnTxt('Ein Moment...')
+        // const payload = {name:formData.name, email:formData.email, message:formData.message}
+        // const obj = {key:"value"}
+        // console.log(payload)
+        // fetch('/api/backend')
+        // .then((response)=>{return response.json()})
+        // .then((data)=>{
+        //     console.log(data)
+        //     alert('succeed')
+        //     setBtnTxt('Nachricht Senden')
+        //     // setFormData({email:"", name:"", message:""})
+        // })
+        // .catch((error)=>{
+        //     console.log(error)
+        //     alert('failed')
+        // })
+
+        fetch('/api/backend', {method:'GET', headers:{'Content-Type':'application/json'}})
+        .then(response=>response.json())
+        .then(data=>console.log(data))
+        .catch(error=>console.log(error))
     }
     const text = {
         name:"Name",
@@ -25,18 +52,18 @@ export function ContactForm({}){
             <form onSubmit={DoSubmit} className='p-2 w-[100%] sm:w-[65%]'>
                 <div className='flex flex-col my-4'>
                     <label htmlFor='input_name' className=' text-lg sm:text-xl text-[rgb(var(--text))]'>{text.name}</label>
-                    <input id='input_name' className='text-lg sm:text-xl ml-1 p-2 border-b-[1px] border-gray-200 font-light text-[rgb(var(--text))] placeholder:text-[rgb(var(--gray))]' type='text' required placeholder={text.namePlaceholder}/>
+                    <input id='input_name' className='text-lg sm:text-xl ml-1 p-2 border-b-[1px] border-gray-200 font-light text-[rgb(var(--text))] placeholder:text-[rgb(var(--gray))]' type='text' required placeholder={text.namePlaceholder} value={formData.name} onChange={DoChangeName}/>
                 </div>
                 <div className='flex flex-col my-4'>
                     <label htmlFor='input_email' className='text-lg sm:text-xl text-[rgb(var(--text))]'>{text.email}</label>
-                    <input id='input_email' className=' text-lg sm:text-xl font-light ml-1 p-2 border-b-[1px] border-gray-200 text-[rgb(var(--text))] placeholder:text-[rgb(var(--gray))]' type='email' required placeholder={text.emailPlaceholder}/>
+                    <input id='input_email' className=' text-lg sm:text-xl font-light ml-1 p-2 border-b-[1px] border-gray-200 text-[rgb(var(--text))] placeholder:text-[rgb(var(--gray))]' type='email' required placeholder={text.emailPlaceholder} value={formData.email} onChange={DoChangeEmail}/>
                 </div>
                 <div className='flex flex-col my-4'>
                     <label htmlFor='textarea_message' className='text-lg sm:text-xl text-[rgb(var(--text))]'>{text.message}</label>
-                    <textarea id='textarea_message' className='text-lg sm:text-xl  ml-1 p-2 border-b-[1px] border-gray-200 font-light text-[rgb(var(--text))] placeholder:text-[rgb(var(--gray))]' type='text' rows={5} required placeholder={text.messagePlaceholder} />
+                    <textarea id='textarea_message' className='text-lg sm:text-xl  ml-1 p-2 border-b-[1px] border-gray-200 font-light text-[rgb(var(--text))] placeholder:text-[rgb(var(--gray))]' type='text' rows={5} required placeholder={text.messagePlaceholder} value={formData.message} onChange={DoChangeMessage} />
                 </div>
                 <div className='flex flex-row justify-end py-4'>
-                    <button className='flex flex-row gap-2 items-center text-lg sm:text-xl text-[rgb(var(--text))] '>{text.button} <Arrow className='text-2xl'/> </button>
+                    <button className='flex flex-row gap-2 items-center text-lg sm:text-xl text-[rgb(var(--text))] '>{btnTxt} <Arrow className='text-2xl'/> </button>
                 </div>
             </form>
         </div>
