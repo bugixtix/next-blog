@@ -16,27 +16,22 @@ export function ContactForm({}){
     const DoChangeEmail = (e) =>{setFormData((p)=>({...p, email:e.target.value}))}
     const DoSubmit = (e) =>{
         e.preventDefault()
-        // setBtnTxt('Ein Moment...')
-        // const payload = {name:formData.name, email:formData.email, message:formData.message}
-        // const obj = {key:"value"}
-        // console.log(payload)
-        // fetch('/api/backend')
-        // .then((response)=>{return response.json()})
-        // .then((data)=>{
-        //     console.log(data)
-        //     alert('succeed')
-        //     setBtnTxt('Nachricht Senden')
-        //     // setFormData({email:"", name:"", message:""})
-        // })
-        // .catch((error)=>{
-        //     console.log(error)
-        //     alert('failed')
-        // })
+        setBtnTxt('Ein Moment...')
+        const payload = {name:formData.name, email:formData.email, message:formData.message}
+        fetch('/api/backend', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
+        .then((response)=>{return response.json()})
+        .then((data)=>{
+            console.log(data)
+            alert('succeed')
+            setBtnTxt('Noch eine Nachricht Senden')
+            // setFormData({email:"", name:"", message:""})
+        })
+        .catch((error)=>{
+            console.log(error)
+            setBtnTxt('Nochmal Senden')
+            alert('failed')
+        })
 
-        fetch('/api/backend', {method:'GET', headers:{'Content-Type':'application/json'}})
-        .then(response=>response.json())
-        .then(data=>console.log(data))
-        .catch(error=>console.log(error))
     }
     const text = {
         name:"Name",
