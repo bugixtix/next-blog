@@ -6,51 +6,112 @@ import ServiceAccount from '@/app/api/backend/serviceAccountKey.json'
 
 export async function POST(request){
 
-    const colName = 'portfolio-emails'
-
-    let firebaseFetchError = 'Etwas ist schiefgelaufen, bitte versuchen Sie später nochmal.'
-    let tryCatchError = 'Etwas ist schiefgelaufen, bitte versuchen Sie später nochmal.'
-    let emailSent = 'Hallo, Wir werden so schnell wie möglich auf ihre Nachricht antworten. Wir wünschen Ihnen einen schönen Tag!'
-    let unsufficientData = 'Bitte Füllen Sie die Felder aus.'
+    const clientMessages = {
+      firebaseError:"Etwas in unserer Firebase Datenbank ist schiefgelaufen, bitte versuche es später erneut.",
+      tryCatchError:"Etwas in unserem Code ist schiefgelaufen, bitte versuche es später erneut.",
+      succeed:"Hallo, wir antworten auf deine Nachricht in kürze. Einen schönen Tag wünschen wir noch!",
+      unsufficientData:"Bitte fülle die alle Felder aus."
+    }
+    const serverMessages = {
+      unsufficientData:"Client Provided Unsufficient Data.",
+      succeed:"Everything Went Well.",
+      firebaseError:"Something Went Wrong While Getting Access to Firebase.",
+      tryCatchError:"Something Went Wrong While Running Try-Catch Block."
+    }
+    
     let responseObject = {error:"initial value", message:"initial", status:0 }
+
     // const data = await request.json()
     // console.log(data)
     // return new Response(JSON.stringify({key:'Okay'}))
+
+    async function DoSaveMessage(data){
+      let responseObject = {error:"initial value", message:"initial", status:0 }
+      const colName = "portfolio-emails"
+      const {email, message, name} = await data
+        try{
+          let docName = email +'_' +String(Math.floor(Math.random()*1000000))
+          if (!admin.apps.length) admin.initializeApp({credential:admin.credential.cert(ServiceAccount),});
+          const db = getFirestore();
+          const docRef = db.collection(colName).doc(docName)
+          
+          await docRef.set({
+            name:name,
+            email:email,
+            message:message,
+            timestamp: admin.firestore.FieldValue.serverTimestamp(),
+          })
+          responseObject = {error:serverMessages.succeed, status:200, message:clientMessages.succeed}
+
+      }catch(error){
+        responseObject = {error:`${serverMessages.firebaseError}: ${error}`, message:clientMessages.firebaseError, status:500}
+      }
+      return responseObject;
+    }
+    async function DoSaveSubscription(data){
+      let responseObject = {error:"initial value", message:"initial", status:0 }
+      const colName = "portfolio-subscriptions"
+      const {email} = data;
+      try{
+        let docName = email +'_' +String(Math.floor(Math.random()*1000000))
+        if (!admin.apps.length) admin.initializeApp({credential:admin.credential.cert(ServiceAccount),});
+        const db = getFirestore();
+        const docRef = db.collection(colName).doc(docName)
+        
+        await docRef.set({
+          email:email,
+          timestamp: admin.firestore.FieldValue.serverTimestamp(),
+        })
+        responseObject = {error:serverMessages.succeed, status:200, message:clientMessages.succeed}
+
+      }catch(error){
+        responseObject = {error:`${serverMessages.firebaseError}: ${error}`, message:clientMessages.firebaseError, status:500}
+      }
+
+      return responseObject
+    }
+    
     try{
-      const {name, email, message} = await request.json()
-      console.log(name, email, message)
+      const clientData = await request.json()
+      // console.log(name, email, message)
       // 400
-      if(!name || !email||!message){
-        responseObject = {error:"Please Provide the Requested Information", status:400, message:unsufficientData}
-        return new Response(JSON.stringify(responseObject))
+      if(clientData.type === "MESSAGE"){
+        responseObject = await DoSaveMessage(clientData)
+      }
+      else if(clientData.type === "SUBSCRIPTION"){
+        responseObject = await DoSaveSubscription(clientData)
+      }else{
+        console.log('UNKNOWN CLIENT DATA')
+        responseObject = {error:serverMessages.unsufficientData, status:400, message:clientMessages.unsufficientData}
       }
       // 200
-      try{
-            let docName = email +'_' +String(Math.floor(Math.random()*1000000))
-            if (!admin.apps.length) admin.initializeApp({credential:admin.credential.cert(ServiceAccount),});
-            const db = getFirestore();
-            const docRef = db.collection(colName).doc(docName)
+
+      // try{
+      //       let docName = email +'_' +String(Math.floor(Math.random()*1000000))
+      //       if (!admin.apps.length) admin.initializeApp({credential:admin.credential.cert(ServiceAccount),});
+      //       const db = getFirestore();
+      //       const docRef = db.collection(colName).doc(docName)
             
-            await docRef.set({
-              name:name,
-              email:email,
-              message:message,
-              timestamp: admin.firestore.FieldValue.serverTimestamp(),
-            })
-            responseObject = {error:"There is no error occured!",success:"E-mail was sent successfully!", status:200, message:emailSent}
-            return new Response(JSON.stringify(responseObject))
+      //       await docRef.set({
+      //         name:name,
+      //         email:email,
+      //         message:message,
+      //         timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      //       })
+      //       responseObject = {error:serverMessages.succeed, status:200, message:clientMessages.succeed}
+      //       return new Response(JSON.stringify(responseObject))
   
-      }catch(error){
-        responseObject = {error:`Something went wrong while accessing Firebase! ${error}`, message:firebaseFetchError, status:500}
-        return new Response(JSON.stringify(responseObject))
-      }
+      // }catch(error){
+      //   responseObject = {error:`${serverMessages.firebaseError}: ${error}`, message:clientMessages.firebaseError, status:500}
+      //   return new Response(JSON.stringify(responseObject))
+      // }
       // return new Response(JSON.stringify(responseObject))
       // 500
       }catch(error){
         console.log(error)
-        responseObject = {error:"Something went wrong in Try Catch Block!", status:500, message:tryCatchError}
-        return new Response(JSON.stringify(responseObject))
+        responseObject = {error:serverMessages.tryCatchError, status:500, message:clientMessages.tryCatchError}
       }
+      return new Response(JSON.stringify(responseObject))
   }  
 
 //   export async function GET(request) {

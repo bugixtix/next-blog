@@ -9,7 +9,7 @@ import { LiaLongArrowAltRightSolid as Arrow} from "react-icons/lia";
 import { TfiControlShuffle } from 'react-icons/tfi'
 
 export function ContactForm({}){
-    const [formData, setFormData] = useState({name:"", message:"",email:""})
+    const [formData, setFormData] = useState({name:"", message:"",email:"", type:"MESSAGE"})
     const [btnTxt, setBtnTxt] = useState('Nachricht Senden')
     const DoChangeName = (e) =>{setFormData((p)=>({...p, name:e.target.value}))}
     const DoChangeMessage = (e) =>{setFormData((p)=>({...p, message:e.target.value}))}
@@ -17,21 +17,22 @@ export function ContactForm({}){
     const DoSubmit = (e) =>{
         e.preventDefault()
         setBtnTxt('Ein Moment...')
-        const payload = {name:formData.name, email:formData.email, message:formData.message}
+        const payload = {name:formData.name, email:formData.email, message:formData.message, type:formData.type}
         fetch('/api/backend', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
         .then((response)=>{return response.json()})
         .then((data)=>{
             console.log(data)
             alert('succeed')
-            setBtnTxt('Noch eine Nachricht Senden')
-            // setFormData({email:"", name:"", message:""})
+            if(data?.status === 200 ){
+                setFormData((p)=>({...p,email:"", name:"",message:""}))
+                setBtnTxt('Noch eine Nachricht Senden')
+            }
         })
         .catch((error)=>{
             console.log(error)
             setBtnTxt('Nochmal Senden')
             alert('failed')
         })
-
     }
     const text = {
         name:"Name",
