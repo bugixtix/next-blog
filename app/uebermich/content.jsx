@@ -6,6 +6,7 @@ import Newsletter from '@/app/components/newsletter.jsx'
 import Footer from '@/app/components/footer'
 import Sea from '@/public/images/sea.jpg'
 import Erwin from '@/public/images/commander_erwin.webp'
+import Eren from '@/public/images/eren.avif'
 
 import Image from 'next/image'
 
@@ -19,13 +20,15 @@ export function AboutMe(){
                 title:"Meine Soldaten drängen nach vorne!",
                 author:" — Kommandant Erwin",
                 content:"Alles, von dem du dachtest, es hätte einen Sinn: jede Hoffnung, jeder Traum, jeder Moment des Glücks. Nichts davon ist von Bedeutung, wenn du blutend auf dem Schlachtfeld liegst. Nichts davon ändert etwas daran, was ein fliegender Stein mit einem Körper anstellt, wir alle sterben. Aber bedeutet das, dass unser Leben sinnlos ist? Bedeutet das, dass es keinen Sinn hatte, geboren zu werden? Würden Sie das auch von unseren getöteten Kameraden sagen? Was ist mit deren Leben? Waren sie sinnlos?... Nein, waren sie nicht! Ihr Andenken dient uns allen als Beispiel! Die mutigen Gefallenen! Die gequälten Gefallenen! Ihr Leben hat einen Sinn, weil wir, die Lebenden, uns weigern, sie zu vergessen! Und während wir in den sicheren Tod reiten, vertrauen wir darauf, dass unsere Nachfolger dasselbe für uns tun werden! Denn meine Soldaten knicken nicht ein und geben nicht auf, wenn sie mit der Grausamkeit dieser Welt konfrontiert werden! Meine Soldaten drängen nach vorne! Meine Soldaten schreien auf! Meine Soldaten wüten!",
-                img:Erwin
+                img:Erwin,
+                imgText:"Kommandant Erwin führt seine Soldaten in den unausweichlichen Tod"
             },
             {
                 title:"Marley's Monolog",
-                author:" — Ehren",
+                author:" — Ehren Jäger",
                 content:`Jeden Tag, an dem ich hier bin, denke ich: Warum ist es überhaupt so weit gekommen? Geschädigte Seelen und Körper... Ihre Freiheit weggenommen... Sie haben sogar sich selbst verloren. Wenn die Menschen wüssten, dass es so weit kommen würde, würde niemand in den Krieg ziehen. Aber die meisten Menschen werden von etwas getrieben, gezwungen, in die Hölle zu ziehen. Dieses „Etwas“ war nicht ihre Wahl, ihre Situation oder andere zwangen sie dazu. Aber Menschen, die sich selbst zurückdrängen, sehen eine andere Art von Hölle. Sie können etwas hinter der Hölle sehen. Vielleicht ist es Hoffnung, vielleicht ist es sogar eine andere Hölle. Nur diejenigen, die immer weitergehen, werden es jemals erfahren.`,
-                img:""
+                img:Eren,
+                imgText:"Eren Jäger denkt über die Entwicklung der Ereignisse nach"
             }
         ],
         imgDescription:"Meer!"
@@ -37,28 +40,33 @@ export function AboutMe(){
                 <p className="font-semibold text-xl text-[rgb(var(--intro))] text-start"> {text.intro}</p>
             </div>
             <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--gray))] rounded-2xl my-16"></div>
-            <div className="_image p-2 sm:p-8 text-center italic">
-                <Image src={Erwin} alt="Bild" />
-                {text.imgDescription}
-            </div>
+            
             {text.post.map((i, index)=>(<Post obj={i} key={index}/>))}
             {/* <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--gray))] rounded-2xl my-16"></div> */}
         </div>
     )
 }
 
-function Post({obj={title:"",author:"", content:""}}){
+function Post({obj={title:"",author:"", content:"", img:null, imgText:""}}){
 
     return(
-        <div className='sm:w-[70%] flex flex-col items-start'>
-            <div className="_title flex flex-row text-[rgb(var(--forderground))] p-1">
-                <h2 className=" font-semibold italic flex flex-col">&#x275B; {obj.title} &#x275C; <span className="not-italic">{obj.author}</span></h2>
+        <div className="w-[100%] flex flex-col items-center">
+            <div className="_image p-2 sm:p-8 text-center italic">
+                <Image src={obj.img} alt="Bild" />
+                {obj.imgText}
             </div>
 
-            <div className="_text p-4 text-[rgb(var(--forderground))]">
-                <p className="font-medium text-[28px]/relaxed text-start">
-                    {obj.content}
-                </p>
+            <div className='sm:w-[70%] flex flex-col items-start'>
+
+                <div className="_title flex flex-row text-[rgb(var(--forderground))] p-1">
+                    <h2 className=" font-semibold italic flex flex-col">&#x275B; {obj.title} &#x275C; <span className="not-italic">{obj.author}</span></h2>
+                </div>
+
+                <div className="_text p-4 text-[rgb(var(--forderground))]">
+                    <p className="font-medium text-[28px]/relaxed text-start">
+                        {obj.content}
+                    </p>
+                </div>
             </div>
         </div>
     )
