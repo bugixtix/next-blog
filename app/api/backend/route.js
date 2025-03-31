@@ -21,9 +21,6 @@ export async function POST(request){
     
     let responseObject = {error:"initial value", message:"initial", status:0 }
 
-    // const data = await request.json()
-    // console.log(data)
-    // return new Response(JSON.stringify({key:'Okay'}))
 
     async function DoSaveMessage(data){
       let responseObject = {error:"initial value", message:"initial", status:0 }
@@ -73,7 +70,6 @@ export async function POST(request){
     
     try{
       const clientData = await request.json()
-      // console.log(name, email, message)
       // 400
       if(clientData.type === "MESSAGE"){
         responseObject = await DoSaveMessage(clientData)
@@ -84,41 +80,9 @@ export async function POST(request){
         console.log('UNKNOWN CLIENT DATA')
         responseObject = {error:serverMessages.unsufficientData, status:400, message:clientMessages.unsufficientData}
       }
-      // 200
-
-      // try{
-      //       let docName = email +'_' +String(Math.floor(Math.random()*1000000))
-      //       if (!admin.apps.length) admin.initializeApp({credential:admin.credential.cert(ServiceAccount),});
-      //       const db = getFirestore();
-      //       const docRef = db.collection(colName).doc(docName)
-            
-      //       await docRef.set({
-      //         name:name,
-      //         email:email,
-      //         message:message,
-      //         timestamp: admin.firestore.FieldValue.serverTimestamp(),
-      //       })
-      //       responseObject = {error:serverMessages.succeed, status:200, message:clientMessages.succeed}
-      //       return new Response(JSON.stringify(responseObject))
-  
-      // }catch(error){
-      //   responseObject = {error:`${serverMessages.firebaseError}: ${error}`, message:clientMessages.firebaseError, status:500}
-      //   return new Response(JSON.stringify(responseObject))
-      // }
-      // return new Response(JSON.stringify(responseObject))
-      // 500
       }catch(error){
         console.log(error)
         responseObject = {error:serverMessages.tryCatchError, status:500, message:clientMessages.tryCatchError}
       }
       return new Response(JSON.stringify(responseObject))
   }  
-
-//   export async function GET(request) {
-//     return new Response(JSON.stringify({ key: 'value' }), {
-//         status: 200,
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     });
-// }

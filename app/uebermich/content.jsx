@@ -4,7 +4,6 @@ import Navbar from '@/app/components/navbar'
 import Profile from '@/app/components/profile.jsx'
 import Newsletter from '@/app/components/newsletter.jsx'
 import Footer from '@/app/components/footer'
-import Sea from '@/public/images/sea.jpg'
 import Erwin from '@/public/images/commander_erwin.webp'
 import Eren from '@/public/images/eren.avif'
 
@@ -30,19 +29,16 @@ export function AboutMe(){
                 img:Eren,
                 imgText:"Eren Jäger denkt über die Entwicklung der Ereignisse nach"
             }
-        ],
-        imgDescription:"Meer!"
+        ]
     }
     return(
         <div className="_main flex flex-col w-[100%] items-center gap-2 pt-10">
-            {/* <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--gray))] rounded-2xl my-16"></div> */}
             <div className="_intro sm:w-[60%] py-10">
                 <p className="font-semibold text-xl text-[rgb(var(--intro))] text-start"> {text.intro}</p>
             </div>
             <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--gray))] rounded-2xl my-16"></div>
             
             {text.post.map((i, index)=>(<Post obj={i} key={index}/>))}
-            {/* <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--gray))] rounded-2xl my-16"></div> */}
         </div>
     )
 }

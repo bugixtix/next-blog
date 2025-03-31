@@ -6,7 +6,7 @@ import { IoMoon as Moon } from "react-icons/io5";
 import { IoSunny as Sun } from "react-icons/io5";
 import { usePathname } from 'next/navigation';
 
-function Navbar({theme = "light",setTheme=()=>{}, themeSwitcher=false}) {
+function Navbar({theme = "light",setTheme=()=>{}}) {
   const pathname = usePathname()
   
   const HandleClick = () =>{

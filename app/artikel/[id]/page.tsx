@@ -1,9 +1,6 @@
-// import {use} from 'react'
-import { Metadata } from "next";
+
 
 import {cookies} from 'next/headers'
-import Cookies from 'js-cookie'
-import {notFound} from 'next/navigation'
 import Footer from '@/app/components/footer'
 import ARTICLES from '@/public/articles.json'
 import Div_ from '@/app/components/div'
@@ -41,9 +38,7 @@ async function page({params}) {
 
   const file  = await fs.readFile(process.cwd() + `/public/articles/${id}.md`, 'utf-8')
   var {data, content} = matter(file)
-  // meta = {meta}
-  // console.log(id)
-  // console.dir(content ,{depth:null})
+
   return (
     <div className={`w-[100%] flex flex-col items-center ${theme ==="dark"?'dark bg-black':'light'}`}>
       <Navbar/>

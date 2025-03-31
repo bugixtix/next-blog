@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import image_ from '@/public/example.jpg'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -18,9 +17,6 @@ function ArticleBox({content}) {
     date:"01.01.2000"
   })
 
-  const handleClick = (href) =>{
-    router.push(`/artikel/${href}`)
-  }
   useEffect(()=>{
     setContent_(content)
   },[])

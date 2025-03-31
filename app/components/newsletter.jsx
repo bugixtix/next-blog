@@ -40,7 +40,7 @@ function Newsletter() {
   if(savedValue.length > 0) setInputBlocked(true)
     setFormData((p)=>({...p, email:savedValue}))
   },[])
-  // TODO: input gets disabled once an email address was alerady provided
+  
   return (
     <div className='flex flex-col items-center w-[100%] p-4 pb-12 text-[rgb(var(--forderground))]'>
       <div className="_line w-[280px] sm:w-[40%] h-[1px] bg-[rgb(var(--line))] rounded-2xl my-16"></div>

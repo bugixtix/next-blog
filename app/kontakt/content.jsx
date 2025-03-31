@@ -6,7 +6,6 @@ import Profile from '@/app/components/profile.jsx'
 import Newsletter from '@/app/components/newsletter.jsx'
 import Footer from '@/app/components/footer'
 import { LiaLongArrowAltRightSolid as Arrow} from "react-icons/lia";
-import { TfiControlShuffle } from 'react-icons/tfi'
 
 export function ContactForm({}){
     const btnTxt_ = {wait:"Ein Moment...", send:"Nachrich Senden", sendAgain:"Noch eine Nachricht senden"}

@@ -1,12 +1,12 @@
 'use client'
 import {motion} from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import React, { Children } from 'react'
+import React from 'react'
 
 function Div_({children, className='', triggerOnce=false, initialStyle=true}) {
     const {ref, inView} = useInView({triggerOnce:triggerOnce, threshold:0.2});
   return (
-    // <div className='w-[100%] h-[100%] bg-transparent'>
+    
         <motion.div
             ref={ref}
             initial={{opacity:0, y:50}}
@@ -16,7 +16,7 @@ function Div_({children, className='', triggerOnce=false, initialStyle=true}) {
         >
             {children}
         </motion.div>
-    // </div>
+   
   )
 }
 

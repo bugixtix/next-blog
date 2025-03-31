@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
       <div className={`${theme==="dark"?'dark':'light'} bg-[rgb(var(--background))]`}>
-      <Navbar theme={theme} setTheme={setTheme} themeSwitcher={true} />
+      <Navbar theme={theme} setTheme={setTheme} />
       <Profile/>
       <Pseudo className="h-[2rem]"/>
       <Content theme={theme}/>
